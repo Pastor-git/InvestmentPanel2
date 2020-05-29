@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Panelel Inwestora - Strona domowa</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center>
+		<h1>Panel</h1>
+		<h2>Logowanie</h2>
+		<ul>
+			<li><a  href="/">Strona domowa</a></li>
+			<li><a class="active" href="login">Zaloguj</a></li>
+			<li><a href="registration"> Rejestracja</a></li>
+			<li><a href="userPanel">Panel klienta</a></li>
+			<li><a href="kontakt">Kontakt</a></li>
+			<li><a href="loginform">Logowanie</a></li>
+		</ul>
+		
+		<div tf:if="not ${allUsers.isEmpty()}">
+			<table border ="1">
+				<tr>
+					<th>email</th>
+					<th>pass</th>
+				</tr>
+				<tr th:each="user: ${allUsers}" th:object="${user}">
+				  <td th:text="*{emailAddress}"></td>
+				  <td th:text="*{password}"></td>
+				  </tr>
+		</table>
+		</div>
+		<div tf:if="${allUsers.isEmpty()}">
+		<h2> NO DATA</h2>
+		</div>
+	</center>
+</body>
+</html>

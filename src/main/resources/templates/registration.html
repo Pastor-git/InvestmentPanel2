@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Panelel Inwestora - Strona domowa</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<center>
+		<h1>Panel</h1>
+		<h2>Rejestracja uzytkownika</h2>
+		<ul>
+			<li><a  href="/">Strona domowa</a></li>
+			<li><a href="login">Zaloguj</a></li>
+			<li><a class="active" href="registration"> Rejestracja</a></li>
+			<li><a href="userPanel">Panel klienta</a></li>
+			<li><a href="kontakt">Kontakt</a></li>
+			<li><a href="loginform">Logowanie</a></li>
+		</ul>
+		
+		<form action="#" method="post" th:action="@{/save}" th:object="${user}">
+		  <p>Email: <input type="text" th:field="*{emailAddress}" required/></p>
+		  <p>Password: <input type="password" th:field="*{password}" required/></p>
+		  <input type="submit" value="Save"/>
+		</form>
+		<a th:href="@{/kontakt}"> Wyswietl</a>
+	</center>
+</body>
+</html>

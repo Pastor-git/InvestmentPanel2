@@ -1,11 +1,20 @@
 package com.cschoolproject.InvestmentPanel2.Entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "Users")
@@ -16,14 +25,28 @@ public class User {
 	@Column(name = "user_id", nullable = false)
 	private Long id;
 	
+	@NotNull
 	@Column(name = "email_address", unique = true, nullable = false)
 	private String emailAddress;
 	
+	@NotNull
 	@Column(name = "password", nullable = false)
 	private String password;
-//	
-//	@Column(name = "user_type", nullable = false)
-//	private TypeOfUser type;
+	
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	private Set<UserRole> roles = new HashSet<>();
+	
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	private Set<Property> properties = new HashSet<>();
+
+	
+	public User(String emailAddress, String password, Set<UserRole> roles) {
+		super();
+		this.emailAddress = emailAddress;
+		this.password = password;
+		this.roles = roles;
+	}
 
 	public User(String emailAddress, String password) { //, TypeOfUser type) {
 		super();
@@ -60,18 +83,23 @@ public class User {
 		this.password = password;
 	}
 
-//	public TypeOfUser getType() {
-//		return type;
-//	}
-//
-//	public void setType(TypeOfUser type) {
-//		this.type = type;
-//	}
-//
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", emailAddress=" + emailAddress + ", password=" + password + ", type=" + type + "]";
-//	}
+	public Set<UserRole> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<UserRole> roles) {
+		this.roles = roles;
+	}
+
+	public Set<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Set<Property> properties) {
+		this.properties = properties;
+	}
+
+	
 	
 	
 

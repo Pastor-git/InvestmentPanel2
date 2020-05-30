@@ -2,24 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Panelel Inwestora - Strona domowa</title>
+<title>Panelel Inwestora</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<center>
 		<h1>Panel</h1>
-		<h2>Panel klienta</h2>
+		
 		<ul>
-			<li><a  href="/">Strona domowa</a></li>
+			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
 			<li><a href="registration"> Rejestracja</a></li>
-			<li><a class="active" href="userPanel">Panel klienta</a></li>
+			<li><a href="userPanel">Panel klienta</a></li>
 			<li><a href="kontakt">Kontakt</a></li>
 			<li><a href="loginform">Logowanie</a></li>
 		</ul>
-		
 		<br><br>
-		<a href="#" th:href="@{propertyForm}"> Dodaj nieruchomość</a>
+		<h2>Dziękujemy za rejestrację!</h2>
+		<br><br>
+		<a href="#" th:href="@{/}"> Wróć do strony głównej</a>
 	</center>
 </body>
 </html>

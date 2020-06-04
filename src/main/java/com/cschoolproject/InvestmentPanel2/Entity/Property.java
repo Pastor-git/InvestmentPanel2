@@ -11,15 +11,15 @@ import javax.persistence.Table;
 @Table(name = "Properties")
 public class Property {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "property_id", nullable = false)
 	private Long id;
 	
-	@Column(name = "owner_id", nullable = false)
-	private Long owner;
+//	@Column(name = "owner_id", nullable = false)
+//	private Long owner;
 	
-	@Column(name = "property_name", nullable = false)
+	@Column(name = "property_name", nullable = false, unique = true)
 	private String name;
 	
 	@Column(name = "property_voivodeship", nullable = false)
@@ -57,69 +57,188 @@ public class Property {
 
 
 
-	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms,
-			int bathrooms, int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
-		super();
-		this.owner = owner;
-		this.name = name;
-		this.voivodeship = voivodeship;
-		this.city = city;
-		this.address = address;
-		this.bedrooms = bedrooms;
-		this.bathrooms = bathrooms;
-		this.yearBuilt = yearBuilt;
-		this.area = area;
-		this.purchasePrice = purchasePrice;
-		this.purchaseCosts = purchaseCosts;
-	}
+//	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms,
+//			int bathrooms, int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
+//		super();
+//		this.owner = owner;
+//		this.name = name;
+//		this.voivodeship = voivodeship;
+//		this.city = city;
+//		this.address = address;
+//		this.bedrooms = bedrooms;
+//		this.bathrooms = bathrooms;
+//		this.yearBuilt = yearBuilt;
+//		this.area = area;
+//		this.purchasePrice = purchasePrice;
+//		this.purchaseCosts = purchaseCosts;
+//	}
+
+
 
 	public Long getId() {
 		return id;
 	}
 
-	public Long getOwner() {
-		return owner;
-	}
+
+
+	public Property(String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
+		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
+	super();
+	this.name = name;
+	this.voivodeship = voivodeship;
+	this.city = city;
+	this.address = address;
+	this.bedrooms = bedrooms;
+	this.bathrooms = bathrooms;
+	this.yearBuilt = yearBuilt;
+	this.area = area;
+	this.purchasePrice = purchasePrice;
+	this.purchaseCosts = purchaseCosts;
+}
+
+
+
+//	public Long getOwner() {
+//		return owner;
+//	}
+//
+//
+//
+//	public void setOwner(Long owner) {
+//		this.owner = owner;
+//	}
+
+
 
 	public String getName() {
 		return name;
 	}
 
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
 	public String getVoivodeship() {
 		return voivodeship;
 	}
+
+
+
+	public void setVoivodeship(String voivodeship) {
+		this.voivodeship = voivodeship;
+	}
+
+
 
 	public String getCity() {
 		return city;
 	}
 
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
 	public String getAddress() {
 		return address;
 	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
 
 	public int getBedrooms() {
 		return bedrooms;
 	}
 
+
+
+	public void setBedrooms(int bedrooms) {
+		this.bedrooms = bedrooms;
+	}
+
+
+
 	public int getBathrooms() {
 		return bathrooms;
 	}
+
+
+
+	public void setBathrooms(int bathrooms) {
+		this.bathrooms = bathrooms;
+	}
+
+
 
 	public int getYearBuilt() {
 		return yearBuilt;
 	}
 
+
+
+	public void setYearBuilt(int yearBuilt) {
+		this.yearBuilt = yearBuilt;
+	}
+
+
+
 	public float getArea() {
 		return area;
 	}
+
+
+
+	public void setArea(float area) {
+		this.area = area;
+	}
+
+
 
 	public int getPurchasePrice() {
 		return purchasePrice;
 	}
 
+
+
+	public void setPurchasePrice(int purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+
+
+
 	public int getPurchaseCosts() {
 		return purchaseCosts;
 	}
+
+
+
+	public void setPurchaseCosts(int purchaseCosts) {
+		this.purchaseCosts = purchaseCosts;
+	}
+
+
+
+//	@Override
+//	public String toString() {
+//		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + voivodeship + ", city="
+//				+ city + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
+//				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", purchaseCosts=" + purchaseCosts
+//				+ "]";
+//	}
+
+	
 	
 
 }

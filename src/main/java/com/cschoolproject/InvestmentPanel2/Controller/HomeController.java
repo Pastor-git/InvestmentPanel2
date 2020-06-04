@@ -4,9 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,12 +33,14 @@ public class HomeController {
 
 	private UserRepository userRepository;
 	private PropertyRepository propertyRepository;
-
+	
 	@Autowired
 	public HomeController(UserRepository userRepository, PropertyRepository propertyRepository) {
 		this.userRepository = userRepository;
 		this.propertyRepository = propertyRepository;
 	}
+	
+	
 	
 //	@Autowired
 //	public HomeController(PropertyRepository propertyRepository) {
@@ -72,7 +79,25 @@ public class HomeController {
 //	}
 
 	@GetMapping("/userPanel")
-	public String toUserPanel() {
+	public String toUserPanel(Model model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		 
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails)principal).getUsername();
+            User user = userRepository.findByEmailAddress(username);
+        System.out.println(username);
+        System.out.println(user);
+        model.addAttribute("user", user);
+        Iterable<Property> allUserProperties = user.getProperties();
+        model.addAttribute("allUserProperties",allUserProperties);
+
+    } 
+//        else 
+//    {
+//        String username = principal.toString();
+//        System.out.println(username);
+//    }
+  
 		return "userPanel";
 	}
 
@@ -85,6 +110,20 @@ public class HomeController {
 	@GetMapping("/registerSuccess")
 	public String toRegisterSuccess() {
 		return "registerSuccess";
+	}
+	
+	@GetMapping("/logout")
+	public String toLogoutSuccess(HttpServletRequest request, HttpServletResponse response){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+		}
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/logoutSuccess")
+	public String toLogoutSuccess() {
+		return "LogoutSuccess";
 	}
 
 //	@GetMapping("/show")
@@ -101,19 +140,7 @@ public class HomeController {
 ////		return "add";
 ////	}
 	
-	@GetMapping("/propertyForm")
-	public String toRegistration(Model model) {
-		model.addAttribute("property", new Property());
-		return "propertyForm";
-	}
-	
-	@PostMapping("/addProperty")
-	public String addProperty(@ModelAttribute() Property property) {
-		
-		propertyRepository.save(property);
-		System.err.println(property);
-		return "redirect:raport";
-	}
+
 	
 	@GetMapping("/raport")
 	public String toRaport(Model model) {

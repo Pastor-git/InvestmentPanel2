@@ -16,7 +16,7 @@ import com.sun.istack.NotNull;
 @Table(name = "User_role")
 public class UserRole {
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@NotNull
 	@Column(name = "role_id", nullable = false)

@@ -21,11 +21,11 @@
 		<div tf:if="not ${allProperties.isEmpty()}">
 			<table border ="1">
 				<tr>
-					<th>owner</th>
+					<th>id</th>
 					<th>name</th>
 				</tr>
 				<tr th:each="property: ${allProperties}" th:object="${property}">
-				  <td th:text="*{owner}"></td>
+				  <td th:text="*{id}"></td>
 				  <td th:text="*{name}"></td>
 				  </tr>
 		</table>

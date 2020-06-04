@@ -20,9 +20,9 @@ import com.sun.istack.NotNull;
 @Table(name = "Users")
 public class User {
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@Column(name = "user_id", nullable = false)
+	@Column(name = "user_id", unique = true,  nullable = false)
 	private Long id;
 	
 	@NotNull
@@ -34,10 +34,10 @@ public class User {
 	private String password;
 	
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Set<UserRole> roles = new HashSet<>();
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Set<Property> properties = new HashSet<>();
 
 	
@@ -97,6 +97,12 @@ public class User {
 
 	public void setProperties(Set<Property> properties) {
 		this.properties = properties;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", emailAddress=" + emailAddress + ", password=" + password + ", roles=" + roles
+				+ ", properties=" + properties + "]";
 	}
 
 	

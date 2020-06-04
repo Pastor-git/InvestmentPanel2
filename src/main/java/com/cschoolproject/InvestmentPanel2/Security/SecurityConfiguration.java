@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -46,18 +47,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 		.authorizeRequests()
-//			.antMatchers("/").permitAll()
+		.antMatchers("/userPanel", "/raport").authenticated()
+			.antMatchers("/", "/showAll", "/index", "/registration","/propertyForm").permitAll()
 //			.antMatchers("kontakt").permitAll()
 //			.antMatchers("index").permitAll()
 //			.antMatchers("registration").permitAll()
 //			.anyRequest().authenticated()
-			.antMatchers("userPanel").authenticated()
-			.anyRequest().permitAll()
+			
+//			.anyRequest().permitAll()
 
 		.and()
 			.formLogin()
-				.loginPage("/loginform")
+				.loginPage("/login")
 				.permitAll()
+//		.and()
+//			.logout()
+//			.logoutRequestMatcher(new AntPathRequestMatcher("/logoutSuccess"))
+//			.logoutSuccessUrl("/logoutSuccess")
+//			.invalidateHttpSession(true)
+//			.deleteCookies("JSESSIONID")
 		.and()
 			.httpBasic();
 	}

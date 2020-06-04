@@ -10,7 +10,7 @@
 		<h1>Panel</h1>
 		<h2>Dodaj nieruchomość</h2>
 		<ul>
-			<li><a  href="/">Strona domowa</a></li>
+			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
 			<li><a class="active" href="registration"> Rejestracja</a></li>
 			<li><a href="userPanel">Panel klienta</a></li>
@@ -26,21 +26,45 @@
 		</form>
 		<p>Adres: <input type="text" th:field="*{address}" required/></p>
 		-->
-		<form action="#" method="post" th:action="@{/addProperty}" th:object="${property}">
-		  <p>właścisiel: <input type="number" th:field="*{owner}" required/></p>
-		  <p>Nazwa: <input type="text" th:field="*{name}" required/></p>
-		  <p>Województwo: <input type="text" th:field="*{voivodeship}" required/></p>
-		  <p>Miasto: <input type="text" th:field="*{city}" required/></p>
-		  
-		  <p>Liczba sypialni: <input type="number" th:field="*{bedrooms}" required/></p>
-		  <p>Liczba łazienak: <input type="number" th:field="*{bathrooms}" required/></p>
-		  <p>Rok budowy: <input type="number" th:field="*{yearBuilt}" required/></p>
-		  <p>Powierzchnia: <input type="number" th:field="*{area}" required/></p>
-		  <p>Cena zakupu: <input type="number" th:field="*{purchasePrice}" required/></p>
-		  <p>Dodatkowe koszty zakupu: <input type="number" th:field="*{purchaseCosts}" required/></p>
-		  <input type="submit" value="Generuj raport"/>
+		<form action="#" method="post" th:action="@{/addProperty}"
+			th:object="${property}">
+			<p>
+				Nazwa: <input type="text" th:field="*{name}" required />
+			</p>
+			<p>
+				Województwo: <input type="text" th:field="*{voivodeship}" required />
+			</p>
+			<p>
+				Miasto: <input type="text" th:field="*{city}" required />
+			</p>
+			<p>
+				Adres: <input type="text" th:field="*{address}" required />
+			</p>
+			<p>
+				Liczba sypialni: <input type="number" th:field="*{bedrooms}"
+					required />
+			</p>
+			<p>
+				Liczba łazienak: <input type="number" th:field="*{bathrooms}"
+					required />
+			</p>
+			<p>
+				Rok budowy: <input type="number" th:field="*{yearBuilt}" required />
+			</p>
+			<p>
+				Powierzchnia: <input type="number" th:field="*{area}" required />
+			</p>
+			<p>
+				Cena zakupu: <input type="number" th:field="*{purchasePrice}"
+					required />
+			</p>
+			<p>
+				Dodatkowe koszty zakupu: <input type="number"
+					th:field="*{purchaseCosts}" required />
+			</p>
+			<input type="submit" value="Generuj raport" />
 		</form>
-		
+
 	</center>
 </body>
 </html>

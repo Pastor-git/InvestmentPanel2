@@ -10,16 +10,71 @@
 		<h1>Panel</h1>
 		<h2>Panel klienta</h2>
 		<ul>
-			<li><a  href="/">Strona domowa</a></li>
+			<li><a href="/">Strona domowa</a></li>
 			<li><a href="login">Zaloguj</a></li>
 			<li><a href="registration"> Rejestracja</a></li>
 			<li><a class="active" href="userPanel">Panel klienta</a></li>
 			<li><a href="kontakt">Kontakt</a></li>
 			<li><a href="loginform">Logowanie</a></li>
+			<li><a href="logout">Wyloguj</a></li>
 		</ul>
-		
-		<br><br>
-		<a href="#" th:href="@{propertyForm}"> Dodaj nieruchomość</a>
+
+		<br> <br> <a href="#" th:href="@{propertyForm}"> Dodaj
+			nieruchomość</a> <br> <br>
+
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>email</th>
+				<th>pass</th>
+				<th>role</th>
+			</tr>
+			<tr th:object="${user}">
+				<td th:text="*{id}"></td>
+				<td th:text="*{emailAddress}"></td>
+				<td th:text="*{password}"></td>
+				<td th:text="*{roles}"></td>
+			</tr>
+		</table>
+
+		<br> <br>
+		<div tf:if="not ${allUserProperty.isEmpty()}">
+			<table border="1">
+				<tr>
+					<th>id</th>
+					<th>name</th>
+					<th>city</th>
+					<th>address</th>
+					<th>bedrooms</th>
+					<th>bathrooms</th>
+				</tr>
+				<tr th:each="property: ${allUserProperties}" th:object="${property}">
+					<td th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{city}"></td>
+					<td th:text="*{address}"></td>
+					<td th:text="*{bedrooms}"></td>
+					<td th:text="*{bathrooms}"></td>
+				</tr>
+			</table>
+		</div>
+		<div tf:if="${allUsers.isEmpty()}">
+			<h2>NO DATA</h2>
+		</div>
+
+		<br> <br>
+		<h2>usun nieruchomosc</h2>
+
+		<form method="post" th:action="@{/removeProperty}" th:object="${property}">
+			<label for="property">Wybierz nieruchomosc</label> <select
+				name="property" id="property">
+				<div th:each="property: ${allUserProperties}" th:object="${property}">
+					<option value="*{name}" th:text="*{name}"></option>
+				</div>
+			</select> <br> <br> <input type="submit" value="Usun">
+		</form>
+
+
 	</center>
 </body>
 </html>

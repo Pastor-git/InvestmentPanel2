@@ -62,6 +62,25 @@
 				Dodatkowe koszty zakupu: <input type="number"
 					th:field="*{purchaseCosts}" required />
 			</p>
+
+			/////////////////////////////////////UPDATE
+			<p>
+				Mieszęczny zysk z wynajmu: <input type="number"
+												th:field="*{propertyRental}" required />
+			</p>
+			<p>
+				Liczba miesięcy wynajmu rocznie: <input type="number"
+												th:field="*{rentalMonths}" required />
+			</p>
+			<p>
+				Koszty remontów: <input type="number"
+												th:field="*{renovationCost}" required />
+			</p>
+			<p>
+				Potencjalna cena sprzedaży: <input type="number"
+												th:field="*{potentialSell}" required />
+			</p>
+
 			<input type="submit" value="Dodaj" />
 		</form>
 

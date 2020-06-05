@@ -53,13 +53,44 @@ public class Property {
 	
 	@Column(name = "purchase_costs", nullable = false)
 	private int purchaseCosts;
-	
-	
+
+	@Column(name = "monthly_property_rental", nullable = false)
+	private int propertyRental;
+
+	@Column(name = "rental_months", nullable = false)
+	private int rentalMonths;
+
+	@Column(name = "renovation_cost", nullable = false)
+	private int renovationCost;
+
+	@Column(name = "potential_selling_price", nullable = false)
+	private int potentialSell;
+
+// CELEM JEST WYLICZANIE ROCNEGO ZYSKU Z WYNAJMU LUB ZYSKU ZE SPRZEDAŻY
+
 
 	public Property() {
 		super();
 	}
 
+	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms, int bathrooms, int yearBuilt, float area, int purchasePrice, int purchaseCosts, int propertyRental, int rentalMonths, int renovationCost, int potentialSell) {
+		super();
+		this.owner = owner;
+		this.name = name;
+		this.voivodeship = voivodeship;
+		this.city = city;
+		this.address = address;
+		this.bedrooms = bedrooms;
+		this.bathrooms = bathrooms;
+		this.yearBuilt = yearBuilt;
+		this.area = area;
+		this.purchasePrice = purchasePrice;
+		this.purchaseCosts = purchaseCosts;
+		this.propertyRental = propertyRental;
+		this.rentalMonths = rentalMonths;
+		this.renovationCost = renovationCost;
+		this.potentialSell = potentialSell;
+	}
 
 
 //	public Property(Long owner, String name, String voivodeship, String city, String address, int bedrooms,
@@ -85,22 +116,22 @@ public class Property {
 	}
 
 
-
-	public Property(String name, Long owner, String voivodeship, String city, String address, int bedrooms, int bathrooms,
-		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
-	super();
-	this.name = name;
-	this.owner = owner;
-	this.voivodeship = voivodeship;
-	this.city = city;
-	this.address = address;
-	this.bedrooms = bedrooms;
-	this.bathrooms = bathrooms;
-	this.yearBuilt = yearBuilt;
-	this.area = area;
-	this.purchasePrice = purchasePrice;
-	this.purchaseCosts = purchaseCosts;
-}
+//
+//	public Property(String name, Long owner, String voivodeship, String city, String address, int bedrooms, int bathrooms,
+//		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
+//	super();
+//	this.name = name;
+//	this.owner = owner;
+//	this.voivodeship = voivodeship;
+//	this.city = city;
+//	this.address = address;
+//	this.bedrooms = bedrooms;
+//	this.bathrooms = bathrooms;
+//	this.yearBuilt = yearBuilt;
+//	this.area = area;
+//	this.purchasePrice = purchasePrice;
+//	this.purchaseCosts = purchaseCosts;
+//}
 
 
 
@@ -270,8 +301,36 @@ public class Property {
 				+ "]";
 	}
 
-	
-	
-	
 
+	public int getPropertyRental() {
+		return propertyRental;
+	}
+
+	public void setPropertyRental(int propertyRental) {
+		this.propertyRental = propertyRental;
+	}
+
+	public int getRentalMonths() {
+		return rentalMonths;
+	}
+
+	public void setRentalMonths(int rentalMonths) {
+		this.rentalMonths = rentalMonths;
+	}
+
+	public int getRenovationCost() {
+		return renovationCost;
+	}
+
+	public void setRenovationCost(int renovationCost) {
+		this.renovationCost = renovationCost;
+	}
+
+	public int getPotentialSell() {
+		return potentialSell;
+	}
+
+	public void setPotentialSell(int potentialSell) {
+		this.potentialSell = potentialSell;
+	}
 }

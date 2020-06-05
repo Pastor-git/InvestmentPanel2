@@ -53,15 +53,23 @@ public class PropertyService {
 //        System.out.println(username);
 //    
 		//property.setOwner(user.getId());
-        user.getProperties().add(property);
+        property.setOwner(user.getId());
+ //       user.getProperties().add(property);
 		propertyRepository.save(property);
 	}
 	
-//	public void removeProperty(Property property) {
-//		
-//		System.out.println(property.getName());
-//		//propertyRepository.delete(property);
-//		System.out.println("     USUNIETO NIERUCHOMOSC     ");
-//	}
+	public void deleteProperty(Property property) {
+		System.out.println("Jestem w Delete PROPERTY service");
+		System.out.println(property.getName());
+		System.out.println(property);
+		System.out.println(property.getId());
+		System.out.println(propertyRepository.toString());
+		//Property prop = 
+				propertyRepository.deleteById(property.getId());
+			System.out.println();
+		propertyRepository.delete(property);
+		System.out.println("     USUNIETO NIERUCHOMOSC     ");
+		System.out.println(propertyRepository.toString());
+	}
 
 }

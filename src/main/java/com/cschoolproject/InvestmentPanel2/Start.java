@@ -53,7 +53,7 @@ public class Start {
 		userRepository.save(new User("u.ckowal@wp.pl", "ulalala"));//, TypeOfUser.REGULAR));
 		userRepository.save(new User("h.bakus@wp.pl", "helazwesela"));//, TypeOfUser.REGULAR));
 		
-		propertyRepository.save(new Property( "abc", "gfh", "fgh", "dgfhgjh", 2, 3, 2014, 50.0F, 250000, 5000));
+		propertyRepository.save(new Property("abc", 1L, "gfh", "fgh", "dgfhgjh", 2, 3, 2014, 50.0F, 250000, 5000));
 		
 		
 		

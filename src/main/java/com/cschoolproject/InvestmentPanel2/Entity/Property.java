@@ -1,10 +1,15 @@
 package com.cschoolproject.InvestmentPanel2.Entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +21,8 @@ public class Property {
 	@Column(name = "property_id", nullable = false)
 	private Long id;
 	
-//	@Column(name = "owner_id", nullable = false)
-//	private Long owner;
+	@Column(name = "owner_id", nullable = false)
+	private Long owner;
 	
 	@Column(name = "property_name", nullable = false, unique = true)
 	private String name;
@@ -81,10 +86,11 @@ public class Property {
 
 
 
-	public Property(String name, String voivodeship, String city, String address, int bedrooms, int bathrooms,
+	public Property(String name, Long owner, String voivodeship, String city, String address, int bedrooms, int bathrooms,
 		int yearBuilt, float area, int purchasePrice, int purchaseCosts) {
 	super();
 	this.name = name;
+	this.owner = owner;
 	this.voivodeship = voivodeship;
 	this.city = city;
 	this.address = address;
@@ -227,17 +233,44 @@ public class Property {
 	public void setPurchaseCosts(int purchaseCosts) {
 		this.purchaseCosts = purchaseCosts;
 	}
+	
+	public Long getOwner() {
+		return owner;
+	}
+	
+	
+
+	public void setOwner(Long owner) {
+		this.owner = owner;
+	}
+	
+	
 
 
 
 //	@Override
 //	public String toString() {
-//		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + voivodeship + ", city="
-//				+ city + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
+//		return "Property [id=" + id + ", name=" + name + ", voivodeship=" + voivodeship + ", city=" + city
+//				+ ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
 //				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", purchaseCosts=" + purchaseCosts
 //				+ "]";
 //	}
 
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Property [id=" + id + ", owner=" + owner + ", name=" + name + ", voivodeship=" + voivodeship + ", city="
+				+ city + ", address=" + address + ", bedrooms=" + bedrooms + ", bathrooms=" + bathrooms + ", yearBuilt="
+				+ yearBuilt + ", area=" + area + ", purchasePrice=" + purchasePrice + ", purchaseCosts=" + purchaseCosts
+				+ "]";
+	}
+
+	
 	
 	
 

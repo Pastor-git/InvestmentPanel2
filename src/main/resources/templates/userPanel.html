@@ -65,15 +65,52 @@
 		<br> <br>
 		<h2>usun nieruchomosc</h2>
 
-		<form method="post" th:action="@{/removeProperty}" th:object="${property}">
+		<form method="post" th:action="@{/deleteProperty2}"
+			th:object="${property}">
 			<label for="property">Wybierz nieruchomosc</label> <select
 				name="property" id="property">
-				<div th:each="property: ${allUserProperties}" th:object="${property}">
+				<div th:each="property: ${allUserProperties}"
+					th:object="${property}">
 					<option value="*{name}" th:text="*{name}"></option>
 				</div>
 			</select> <br> <br> <input type="submit" value="Usun">
 		</form>
 
+		
+		
+		
+	<table>
+	
+			<thead>
+				<tr>
+
+					<th>name</th>
+					<th>city</th>
+					<th>address</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="property: ${allUserProperties}" th:object="${property}">
+
+					<td th:text="*{name}"></td>
+					<td th:text="*{city}"></td>z
+					<td th:text="*{address}"></td>
+					<td>
+						<form th:action="@{/deleteProperty}" mtehod="post"
+							th:object="${delProp}">
+					  		<input type="hidden" name="id" th:value="${property.id}">
+							<input type="hidden" name="name" th:value="${property.name}">
+							<input type="hidden" name="city" th:value="${property.city}">
+							<input type="hidden" name="address"
+								th:value="${property.address}">
+							<button type="submit">Usun</button>
+						</form>  
+					</td>
+				</tr>
+			</tbody>
+		</table>  
+	
 
 	</center>
 </body>

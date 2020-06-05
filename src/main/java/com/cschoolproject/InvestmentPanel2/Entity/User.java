@@ -37,8 +37,8 @@ public class User {
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Set<UserRole> roles = new HashSet<>();
 	
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	private Set<Property> properties = new HashSet<>();
+//	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+//	private Set<Property> properties = new HashSet<>();
 
 	
 	public User(String emailAddress, String password, Set<UserRole> roles) {
@@ -91,19 +91,19 @@ public class User {
 		this.roles = roles;
 	}
 
-	public Set<Property> getProperties() {
-		return properties;
-	}
-
-	public void setProperties(Set<Property> properties) {
-		this.properties = properties;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", emailAddress=" + emailAddress + ", password=" + password + ", roles=" + roles
-				+ ", properties=" + properties + "]";
-	}
+//	public Set<Property> getProperties() {
+//		return properties;
+//	}
+//
+//	public void setProperties(Set<Property> properties) {
+//		this.properties = properties;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "User [id=" + id + ", emailAddress=" + emailAddress + ", password=" + password + ", roles=" + roles
+//				+ ", properties=" + properties + "]";
+//	}
 
 	
 	

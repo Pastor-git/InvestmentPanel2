@@ -88,7 +88,7 @@ public class HomeController {
         System.out.println(username);
         System.out.println(user);
         model.addAttribute("user", user);
-        Iterable<Property> allUserProperties = user.getProperties();
+        Iterable<Property> allUserProperties = propertyRepository.findByOwner(user.getId());
         model.addAttribute("allUserProperties",allUserProperties);
 
     } 
